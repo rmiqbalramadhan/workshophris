@@ -7,6 +7,12 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'treemanager' =>  [
+             'class' => '\kartik\tree\Module',
+             // other module settings, refer detailed documentation
+         ]
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
