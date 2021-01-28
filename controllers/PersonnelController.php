@@ -4,7 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Personnel;
+use app\models\Career;
+use app\models\Status;
 use app\models\PersonnelSearch;
+use app\models\CareerSearch;
+use app\models\StatusSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -52,8 +56,14 @@ class PersonnelController extends Controller
      */
     public function actionView($id)
     {
+        $dataProviderCareer = Career::search2($id);
+        $dataProviderStatus = Status::search2($id);
+        // $dataProviderFamily = Career::search2($id);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProviderCareer' => $dataProviderCareer,
+            'dataProviderStatus' => $dataProviderStatus,
         ]);
     }
 
@@ -124,4 +134,31 @@ class PersonnelController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionCareer()
+    {
+        $model = new Career();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->prs_master_id]);
+        }
+
+        return $this->render('//career/create', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionStatus()
+    {
+        $model = new Status();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->prs_master_id]);
+        }
+
+        return $this->render('//status/create', [
+            'model' => $model,
+        ]);
+    }
+    
 }

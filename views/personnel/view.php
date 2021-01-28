@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\bootstrap\Tabs;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Personnel */
@@ -34,25 +35,45 @@ $this->params['breadcrumbs'][] = $this->title;
             'employee_name',
             'birth_place',
             'birth_date',
-            'gender_id',
-            'religion_id',
-            'address:ntext',
-            'kab_kodya',
-            'province_name',
-            'pos_code',
-            'email:email',
-            'blood_type',
-            'handphone',
-            'photo_path',
-            'user_id',
-            'properties',
-            'change_log',
-            'attendance_id',
-            'telegram_id',
-            'bank_name',
-            'account_number',
-            'account_name',
+            // 'gender_id',
+            // 'religion_id',
+            // 'address:ntext',
+            // 'kab_kodya',
+            // 'province_name',
+            // 'pos_code',
+            // 'email:email',
+            // 'blood_type',
+            // 'handphone',
+            // 'photo_path',
+            // 'user_id',
+            // 'properties',
+            // 'change_log',
+            // 'attendance_id',
+            // 'telegram_id',
+            // 'bank_name',
+            // 'account_number',
+            // 'account_name',
         ],
     ]) ?>
+
+    <?php
+        echo Tabs::widget([
+            'items' => [
+                [
+                    'label' => 'Detail',
+                    'content' => $this->render('_detail', ['model' => $model]),
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Career',
+                    'content' => $this->render('_career', ['dataProviderCareer' => $dataProviderCareer, 'model' => $model]),
+                ],
+                [
+                    'label' => 'Status',
+                    'content' => $this->render('_status', ['dataProviderStatus' => $dataProviderStatus, 'model' => $model]),
+                ],
+            ]
+        ]);
+    ?>
 
 </div>
