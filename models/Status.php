@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use app\models\Tree;
 
 /**
  * This is the model class for table "hr.prs_status".
@@ -76,5 +77,10 @@ class Status extends \yii\db\ActiveRecord
         ]);
 
         return $dataProvider;
+    }
+
+    public function getStatus()
+    {
+        return $this->hasOne(Tree::class, ['id' => 'status_id']);
     }
 }

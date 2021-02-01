@@ -24,13 +24,7 @@ use app\models\Tree;
         'end_date',
         [
             'label' => 'status',
-            'value' => function ($data){
-
-                $searchType = Tree::find()
-                ->where(['id' => $data->status_id])
-                ->one();
-                return $searchType->name;
-            },
+            'attribute' => 'status.name',
         ],
         'employment_letter',
     ],
