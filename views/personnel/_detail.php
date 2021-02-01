@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use kartik\helpers\Html as kartikHtml; 
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PersonnelSearch */
@@ -17,7 +18,18 @@ use yii\widgets\DetailView;
             // 'employee_name',
             // 'birth_place',
             // 'birth_date',
-            'gender_id',
+            [
+                'label' => 'Tanggal Lahir',
+                'attribute' => function($model){
+                    // return $model->birth_place . ', ' . $model->birth_date . ' ' . Html::tag('span', $model->age . ' tahun', ['class' => 'label label-info']);
+                    return $model->birth_place . ', ' . $model->birth_date . ' ' . kartikHtml::bsLabel($model->age . ' tahun');
+                    // return $model->birth_place . ', ' . $model->birth_date . ' ' . $model->age . ' tahun';
+                },
+            ],
+            [
+                'label' => 'Gender',
+                'attribute' => 'gender.name',
+            ],
             'religion_id',
             'address:ntext',
             'kab_kodya',

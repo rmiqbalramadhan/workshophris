@@ -30,11 +30,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'prs_master_id',
+            // 'prs_master_id',
             'employee_code',
             'employee_name',
-            'birth_place',
-            'birth_date',
+            [
+                'label' => 'Company',
+                'attribute' => function($model){
+                    return $model->lastCareer->company->name ?? "";
+                }
+            ],
+            [
+                'label' => 'Departemen',
+                'attribute' => function($model){
+                    return $model->lastCareer->departement->name ?? "";
+                }
+            ],
+            // 'birth_place',
+            // 'birth_date',
             // 'gender_id',
             // 'religion_id',
             // 'address:ntext',

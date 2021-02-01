@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use app\models\Tree;
+use app\models\Career;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "hr.prs_master".
@@ -93,4 +96,33 @@ class Personnel extends \yii\db\ActiveRecord
             'account_name' => 'Account Name',
         ];
     }
+
+    public function getGender()
+    {
+        return $this->hasOne(Tree::class, ['id' => 'gender_id']);
+    }
+
+    public function getLastCareer()
+    {
+        return $this->hasOne(Career::class, ['prs_master_id' => 'prs_master_id'])->orderBy('start_date DESC')->limit(1);
+    }
+
+    public function afterFind()
+    {
+        $this->birth_date = strtotime ($this->birth_date);
+        $this->birth_date = date ('d-m-Y', $this->birth_date);
+
+        return parent::afterFind();
+    }
+
+    public function getAge()
+    {
+        $date1 = new \DateTime($this->birth_date);
+        $date2 = new \DateTime();
+
+        $diff = $date1->diff($date2);
+
+        return $diff->y;
+    }
+
 }
