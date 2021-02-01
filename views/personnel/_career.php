@@ -20,6 +20,12 @@ use yii\grid\GridView;
             'class' => 'yii\grid\SerialColumn',
         ],
         'start_date',
+        'status_id',
+        [
+            'label' => 'Company',
+            'attribute' => 'company.name',
+        ],
+        'level_id',
         'employment_letter',
     ],
 ]) ?>

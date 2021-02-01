@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use app\models\Tree;
 
 
 /**
@@ -87,4 +88,14 @@ class Career extends \yii\db\ActiveRecord
 
         return $dataProvider;
     }
+
+    public function getCompany(){
+        return $this->hasOne(Tree::class, ['id' => 'company_id']);
+    }
+
+    public function getDepartement(){
+        return $this->hasOne(Tree::class, ['id' => 'department_id']);
+    }
+
+    
 }
