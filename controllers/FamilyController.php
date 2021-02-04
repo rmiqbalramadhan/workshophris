@@ -3,20 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Personnel;
-use app\models\Career;
-use app\models\Status;
-use app\models\PersonnelSearch;
-use app\models\CareerSearch;
-use app\models\StatusSearch;
+use app\models\Family;
+use app\models\FamilySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PersonnelController implements the CRUD actions for Personnel model.
+ * FamilyController implements the CRUD actions for Family model.
  */
-class PersonnelController extends Controller
+class FamilyController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -34,12 +30,12 @@ class PersonnelController extends Controller
     }
 
     /**
-     * Lists all Personnel models.
+     * Lists all Family models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PersonnelSearch();
+        $searchModel = new FamilySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -49,36 +45,29 @@ class PersonnelController extends Controller
     }
 
     /**
-     * Displays a single Personnel model.
+     * Displays a single Family model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $dataProviderCareer = Career::search2($id);
-        $dataProviderStatus = Status::search2($id);
-        // $dataProviderFamily = Family::search2($id);
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'dataProviderCareer' => $dataProviderCareer,
-            'dataProviderStatus' => $dataProviderStatus,
-            // 'dataProviderStatus' => $dataProviderFamily,
         ]);
     }
 
     /**
-     * Creates a new Personnel model.
+     * Creates a new Family model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Personnel();
+        $model = new Family();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->prs_master_id]);
+            return $this->redirect(['view', 'id' => $model->prs_family_id]);
         }
 
         return $this->render('create', [
@@ -87,7 +76,7 @@ class PersonnelController extends Controller
     }
 
     /**
-     * Updates an existing Personnel model.
+     * Updates an existing Family model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,7 +87,7 @@ class PersonnelController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->prs_master_id]);
+            return $this->redirect(['view', 'id' => $model->prs_family_id]);
         }
 
         return $this->render('update', [
@@ -107,7 +96,7 @@ class PersonnelController extends Controller
     }
 
     /**
-     * Deletes an existing Personnel model.
+     * Deletes an existing Family model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -121,45 +110,18 @@ class PersonnelController extends Controller
     }
 
     /**
-     * Finds the Personnel model based on its primary key value.
+     * Finds the Family model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Personnel the loaded model
+     * @return Family the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Personnel::findOne($id)) !== null) {
+        if (($model = Family::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function actionCareer()
-    {
-        $model = new Career();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->prs_master_id]);
-        }
-
-        return $this->render('//career/create', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionStatus()
-    {
-        $model = new Status();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->prs_master_id]);
-        }
-
-        return $this->render('//status/create', [
-            'model' => $model,
-        ]);
-    }
-    
 }
