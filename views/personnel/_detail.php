@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\helpers\Html as kartikHtml; 
+use kartik\helpers\Html as KartikHtml;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PersonnelSearch */
@@ -21,10 +21,11 @@ use kartik\helpers\Html as kartikHtml;
             [
                 'label' => 'Tanggal Lahir',
                 'attribute' => function($model){
-                    // return $model->birth_place . ', ' . $model->birth_date . ' ' . Html::tag('span', $model->age . ' tahun', ['class' => 'label label-info']);
-                    return $model->birth_place . ', ' . $model->birth_date . ' ' . kartikHtml::bsLabel($model->age . ' tahun');
+                    return $model->birth_place . ', ' . $model->birth_date . ' ' . Html::tag('span', $model->age . ' tahun', ['class' => 'label label-info']);
+                    // return $model->birth_place . ', ' . $model->birth_date . ' ' . KartikHtml::bsLabel($model->age . ' tahun');
                     // return $model->birth_place . ', ' . $model->birth_date . ' ' . $model->age . ' tahun';
                 },
+                'format' => 'html',
             ],
             [
                 'label' => 'Gender',
