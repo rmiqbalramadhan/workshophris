@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 
 /**
  * This is the model class for table "hr.prs_education".
@@ -58,5 +59,22 @@ class Education extends \yii\db\ActiveRecord
             'properties' => 'Properties',
             'change_log' => 'Change Log',
         ];
+    }
+
+    public function search2($id)
+    {
+        $query = Education::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['education_year' => SORT_DESC]
+            ]
+        ]);
+
+        $query->andFilterWhere([
+            'prs_master_id' => $id
+        ]);
+
+        return $dataProvider;
     }
 }

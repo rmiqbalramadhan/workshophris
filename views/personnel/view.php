@@ -86,15 +86,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 [
                     'label' => 'Family',
-                    'content' => $this->render('_family', ['dataProviderStatus' => $dataProviderStatus, 'model' => $model]),
+                    'content' => $this->render('_family', ['dataProviderFamily' => $dataProviderFamily, 'model' => $model]),
                 ],
                 [
                     'label' => 'Education',
-                    // 'content' => $this->render('_education', ['dataProviderStatus' => $dataProviderStatus, 'model' => $model]),
+                    'content' => $this->render('_education', ['dataProviderEducation' => $dataProviderEducation, 'model' => $model]),
                 ],
                 [
                     'label' => 'Experience',
-                    // 'content' => $this->render('_experience', ['dataProviderStatus' => $dataProviderStatus, 'model' => $model]),
+                    'content' => $this->render('_experience', ['dataProviderExperience' => $dataProviderExperience, 'model' => $model]),
                 ],
             ]
         ]);

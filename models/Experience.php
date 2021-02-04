@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 
 /**
  * This is the model class for table "hr.prs_experience".
@@ -56,5 +57,22 @@ class Experience extends \yii\db\ActiveRecord
             'properties' => 'Properties',
             'change_log' => 'Change Log',
         ];
+    }
+
+    public function search2($id)
+    {
+        $query = Experience::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['experience_year' => SORT_DESC]
+            ]
+        ]);
+
+        $query->andFilterWhere([
+            'prs_master_id' => $id
+        ]);
+
+        return $dataProvider;
     }
 }

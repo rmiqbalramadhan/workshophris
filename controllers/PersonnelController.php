@@ -6,9 +6,15 @@ use Yii;
 use app\models\Personnel;
 use app\models\Career;
 use app\models\Status;
+use app\models\Family;
+use app\models\Education;
+use app\models\Experience;
 use app\models\PersonnelSearch;
 use app\models\CareerSearch;
 use app\models\StatusSearch;
+use app\models\FamilySearch;
+use app\models\EducationSearch;
+use app\models\ExperienceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -58,13 +64,17 @@ class PersonnelController extends Controller
     {
         $dataProviderCareer = Career::search2($id);
         $dataProviderStatus = Status::search2($id);
-        // $dataProviderFamily = Family::search2($id);
+        $dataProviderFamily = Family::search2($id);
+        $dataProviderEducation = Education::search2($id);
+        $dataProviderExperience = Experience::search2($id);
 
         return $this->render('view', [
             'model' => $this->findModel($id),
             'dataProviderCareer' => $dataProviderCareer,
             'dataProviderStatus' => $dataProviderStatus,
-            // 'dataProviderStatus' => $dataProviderFamily,
+            'dataProviderFamily' => $dataProviderFamily,
+            'dataProviderEducation' => $dataProviderEducation,
+            'dataProviderExperience' => $dataProviderExperience,
         ]);
     }
 
@@ -158,6 +168,45 @@ class PersonnelController extends Controller
         }
 
         return $this->render('//status/create', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionFamily()
+    {
+        $model = new Family();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->prs_master_id]);
+        }
+
+        return $this->render('//family/create', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionEducation()
+    {
+        $model = new Education();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->prs_master_id]);
+        }
+
+        return $this->render('//education/create', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionExperience()
+    {
+        $model = new Experience();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->prs_master_id]);
+        }
+
+        return $this->render('//experience/create', [
             'model' => $model,
         ]);
     }

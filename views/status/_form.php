@@ -19,7 +19,6 @@ use app\models\Tree;
 
     <?= $form->field($model, 'end_date')->textInput() ?>
 
-    <!-- <?= $form->field($model, 'status_id')->textInput() ?> -->
     <?= $form->field($model, 'status_id')->dropdownList(Tree::getDropDownParameter('Status')) ?>
 
     <?= $form->field($model, 'employment_letter')->textInput(['maxlength' => true]) ?>

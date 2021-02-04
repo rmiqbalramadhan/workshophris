@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
+use app\models\Tree;
 
 /**
  * This is the model class for table "hr.prs_family".
@@ -60,5 +62,32 @@ class Family extends \yii\db\ActiveRecord
             'properties' => 'Properties',
             'change_log' => 'Change Log',
         ];
+    }
+
+    public function search2($id)
+    {
+        $query = Family::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['prs_family_id' => SORT_ASC]
+            ]
+        ]);
+
+        $query->andFilterWhere([
+            'prs_master_id' => $id
+        ]);
+
+        return $dataProvider;
+    }
+
+    public function getRelasi()
+    {
+        return $this->hasOne(Tree::class, ['id' => 'relation_id']);
+    }
+
+    public function getGender()
+    {
+        return $this->hasOne(Tree::class, ['id' => 'gender_id']);
     }
 }
