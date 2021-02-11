@@ -48,9 +48,7 @@ class m210204_063957_create_data_experience extends Migration
 
     public function down()
     {
-        echo "m210204_063957_create_data_experience cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('hr.prs_experience');
     }
     
 }
