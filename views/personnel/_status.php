@@ -11,7 +11,7 @@ use app\models\Tree;
 <div class="personnel-index">
 
     <p>
-        <?= Html::a('Create Status', ['status'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Status', ['/status/create', 'prs_master_id' => $model->prs_master_id], ['class' => 'btn btn-success']) ?>
     </p>
 
 <?= GridView::widget([

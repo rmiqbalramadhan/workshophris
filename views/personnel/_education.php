@@ -11,7 +11,7 @@ use app\models\Tree;
 <div class="personnel-index">
 
     <p>
-        <?= Html::a('Create Education', ['education'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Education', ['/education/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 <?= GridView::widget([

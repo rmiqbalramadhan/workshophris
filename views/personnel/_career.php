@@ -10,7 +10,7 @@ use yii\grid\GridView;
 <div class="personnel-index">
 
     <p>
-        <?= Html::a('Create Career', ['career'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Career', ['/career/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 <?= GridView::widget([
