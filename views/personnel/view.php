@@ -96,6 +96,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'label' => 'Experience',
                     'content' => $this->render('_experience', ['dataProviderExperience' => $dataProviderExperience, 'model' => $model]),
                 ],
+                [
+                    'label' => 'Leave',
+                    'content' => $this->render('_leave', ['dataProviderLeave' => $dataProviderLeave, 'model' => $model]),
+                ],
             ]
         ]);
     ?>

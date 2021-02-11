@@ -9,12 +9,14 @@ use app\models\Status;
 use app\models\Family;
 use app\models\Education;
 use app\models\Experience;
+use app\models\Leave;
 use app\models\PersonnelSearch;
 use app\models\CareerSearch;
 use app\models\StatusSearch;
 use app\models\FamilySearch;
 use app\models\EducationSearch;
 use app\models\ExperienceSearch;
+use app\models\LeaveSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -67,6 +69,7 @@ class PersonnelController extends Controller
         $dataProviderFamily = Family::search2($id);
         $dataProviderEducation = Education::search2($id);
         $dataProviderExperience = Experience::search2($id);
+        $dataProviderLeave = Leave::search2($id);
 
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -75,6 +78,7 @@ class PersonnelController extends Controller
             'dataProviderFamily' => $dataProviderFamily,
             'dataProviderEducation' => $dataProviderEducation,
             'dataProviderExperience' => $dataProviderExperience,
+            'dataProviderLeave' => $dataProviderLeave,
         ]);
     }
 

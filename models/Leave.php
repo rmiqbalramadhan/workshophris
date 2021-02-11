@@ -108,6 +108,23 @@ class Leave extends \yii\db\ActiveRecord
         ];
     }
 
+    public function search2($id)
+    {
+        $query = Leave::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['lve_master_id' => SORT_ASC]
+            ]
+        ]);
+
+        $query->andFilterWhere([
+            'prs_master_id' => $id
+        ]);
+
+        return $dataProvider;
+    }
+
     public function requested()
     {
         $query = Leave::find();
