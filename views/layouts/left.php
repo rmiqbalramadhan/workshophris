@@ -36,7 +36,8 @@
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Manajemen Tree', 'url' => ['/tree']],
                     ['label' => 'Manajemen Personnel', 'url' => ['/personnel']],
-                    ['label' => 'Manajemen Cuti', 'url' => ['/leave']],
+                    ['label' => 'Dashboard Cuti', 'url' => ['/leave']],
+                    ['label' => 'Cuti', 'url' => ['/leave/list']],
                     [
                         'label' => 'Some tools',
                         'icon' => 'share',

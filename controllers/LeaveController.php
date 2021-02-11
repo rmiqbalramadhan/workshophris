@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Leave;
 use app\models\LeaveSearch;
+use app\models\Personnel;
+use app\models\PersonnelSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -131,4 +133,34 @@ class LeaveController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionList()
+    {
+        // $searchModel = new LeaveSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new PersonnelSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('_list', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionViewpersonnel($id)
+    {
+        return $this->render('_viewpersonnel', [
+            'model' => $this->findModelPersonnel($id),
+        ]);
+    }
+
+    protected function findModelPersonnel($id)
+    {
+        if (($model = Personnel::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
 }
