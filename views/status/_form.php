@@ -13,7 +13,7 @@ use app\models\Tree;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'prs_master_id')->textInput() ?>
+    <!-- <?= $form->field($model, 'prs_master_id')->textInput(['value' => $model->isNewRecord ? '' : $model->prs_master_id]) ?> -->
 
     <?= $form->field($model, 'start_date')->textInput() ?>
 
