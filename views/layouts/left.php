@@ -38,6 +38,8 @@
                     ['label' => 'Manajemen Personnel', 'url' => ['/personnel']],
                     ['label' => 'Dashboard Cuti', 'url' => ['/leave']],
                     ['label' => 'Cuti', 'url' => ['/leave/list']],
+                    ['label' => 'Ijin', 'url' => ['/permission']],
+                    ['label' => 'Dashboard Ijin', 'url' => ['/permission/dashboard']],
                     [
                         'label' => 'Some tools',
                         'icon' => 'share',
