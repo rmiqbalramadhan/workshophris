@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'lft',
             'rgt',
             'lvl',
-            //'name',
+            'name',
             //'icon',
             //'icon_type',
             //'active:boolean',
