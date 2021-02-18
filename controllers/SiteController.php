@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -20,12 +21,17 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['login', 'logout', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['login'],
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -56,7 +62,10 @@ class SiteController extends Controller
                 'view' => '@app/views/site/login',
             ],
             'logout' => [
-                'class' => 'yii2mod\user\actions\LogoutAction'
+                'class' => 'yii2mod\user\actions\LogoutAction',
+                'on afterLogout' => function ($event) {
+                    return Url::to(['site/login']);
+                },
             ],
             'signup' => [
                 'class' => 'yii2mod\user\actions\SignupAction'
