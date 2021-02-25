@@ -125,4 +125,9 @@ class Personnel extends \yii\db\ActiveRecord
         return $diff->y;
     }
 
+    public function getAttendance()
+    {
+        return $this->hasOne(Attendance::className(), ['attendance_id' => 'pin']);
+    }
+
 }

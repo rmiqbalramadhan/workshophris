@@ -30,7 +30,7 @@ use mdm\admin\components\Helper;
             </div>
         </form>
         <!-- /.search form -->
-        <?php
+        <!-- <?php
         $menuItems = [
             ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
             ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
@@ -69,40 +69,14 @@ use mdm\admin\components\Helper;
                     ],
                 ],
             ],
-            [
-                'label' => 'Some tools',
-                'icon' => 'share',
-                'url' => '#',
-                'items' => [
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                    [
-                        'label' => 'Level One',
-                        'icon' => 'circle-o',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                            [
-                                'label' => 'Level Two',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                    ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ],
         ];
         $menuItems = Helper::filter($menuItems);
 
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
+            'options' => ['class' => 'sidebar-menu tree'],
             'items' => $menuItems,
         ]);
-        ?>
+        ?> -->
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
@@ -111,12 +85,13 @@ use mdm\admin\components\Helper;
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    ['label' => 'Manajemen Tree', 'url' => ['/tree'], 'visible' => Yii::$app->user->can('menu_tree')],
+                    ['label' => 'Manajemen Tree', 'url' => ['/tree'], 'visible' => Yii::$app->user->can('all_menu')],
                     ['label' => 'Manajemen Personnel', 'url' => ['/personnel']],
                     ['label' => 'Dashboard Cuti', 'url' => ['/leave']],
                     ['label' => 'Cuti', 'url' => ['/leave/list']],
-                    ['label' => 'Ijin', 'url' => ['/permission'], 'visible' => Yii::$app->user->can('menu_tree')],
+                    ['label' => 'Ijin', 'url' => ['/permission'], 'visible' => Yii::$app->user->can('all_menu')],
                     ['label' => 'Dashboard Ijin', 'url' => ['/permission/dashboard']],
+                    ['label' => 'Dashboard Kehadiran', 'url' => ['/attendance/dashboard'], 'visible' => Yii::$app->user->can('all_menu')],
                     [
                         'label' => 'Admin', 
                         'url' => '#',
