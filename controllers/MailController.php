@@ -13,9 +13,12 @@ class MailController extends \yii\web\Controller
 
     public function actionSend()
     {
-        $message = Yii::$app->mailer->compose('testing-email')
+        $message = Yii::$app->mailer->compose('testing-email', [
+            'name' => 'iqbal'
+        ])
         ->setFrom('noreply@setneg-ppkk.co.id')
-        ->setTo(['rmiqbalramadhan@gmail.com', 'evant395@gmail.com'])
+        // ->setFrom('noreply@ppkk.com')
+        ->setTo('rmiqbalramadhan@gmail.com')
         ->setSubject('Testing');
         // ->setTextBody('Plain text content')
         // ->setHtmlBody('<b>HTML content</b>')
