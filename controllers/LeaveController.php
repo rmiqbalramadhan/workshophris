@@ -10,6 +10,9 @@ use app\models\PersonnelSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use rudissaar\fpdf\FPDF;
+
+
 
 /**
  * LeaveController implements the CRUD actions for Leave model.
@@ -161,6 +164,108 @@ class LeaveController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionPrint($id)
+    {
+        $model = $this->findModel($id);
+
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->Image(Yii::getAlias('@projectLogoPath').'ppkk-official-logo.jpg', 10, 10, -300);
+        $pdf->SetFont('Arial');
+        $pdf->Cell(50);
+        $pdf->Cell(40, 10, 'KEMENTERIAN SEKRETARIAT NEGARA RI');
+        $pdf->Ln();
+        $pdf->Cell(50);
+        $pdf->Cell(40, 10, 'PUSAT PENGELOLAAN KOMPLEK KEMAYORAN');
+        $pdf->Ln();
+        $pdf->Cell(50);
+        $pdf->Cell(40, 10, 'Jl. Merpati B-14 No. 2, Kota Baru Bandar Kemayoran Jakarta Pusat 10720');
+        $pdf->Ln();
+        $pdf->Cell(50);
+        $pdf->Cell(40, 10, 'Telp. 021-4207688 (Hunting) Faks. 021-6543123');
+        $pdf->Line(10, 60, 200, 60);
+        $pdf->Ln();
+        $pdf->Cell(80);
+        $pdf->Ln();
+        $pdf->Cell(80, 10, '');
+        $pdf->Ln();
+        $pdf->Cell(80);
+        $pdf->Cell(40, 10, 'Surat Cuti');
+        $pdf->Ln();
+        $pdf->Cell(65);
+        $pdf->Cell(40, 10, 'nomor : ..../cuti/KU/2021');
+        $pdf->Ln();
+        $pdf->Cell(80, 10, '');
+        $pdf->Ln();
+        $pdf->Cell(80, 10, '');
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Yang bertanda tangan di bawah ini:');
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Nama');
+        $pdf->Cell(25);
+        $pdf->Cell(40, 10, ': ' . $model->prs_master_id);
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'NPP');
+        $pdf->Cell(25);
+        $pdf->Cell(40, 10, ': ' . $model->prs_master_id);
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Golongan');
+        $pdf->Cell(25);
+        $pdf->Cell(40, 10, ': ' . $model->prs_master_id);
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Jabatan');
+        $pdf->Cell(25);
+        $pdf->Cell(40, 10, ': ' . $model->prs_master_id);
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Cuti');
+        $pdf->Cell(25);
+        $pdf->Cell(40, 10, ': ' . Yii::$app->formatter->format($model->start_date, 'date') . ' - ' . Yii::$app->formatter->format($model->end_date, 'date'));
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Keterangan');
+        $pdf->Cell(25);
+        $pdf->Cell(40, 10, ': ' . $model->leave_reason);
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Pegawai Pengganti');
+        $pdf->Cell(25);
+        $pdf->Cell(40, 10, ': ' . $model->substitute_employee);
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(15, 10, '');
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Demikian atas perhatian Bapak Ibu kami ucapkan terimakasih.');
+        $pdf->Ln();
+        $pdf->Cell(15, 15, '');
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Mengetahui,');
+        $pdf->Ln();
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Direktur Keuangan dan Umum');
+        $pdf->Cell(100);
+        $pdf->Cell(40, 10, 'Pemohon');
+        $pdf->Ln();
+        $pdf->Cell(15, 15, '');
+        $pdf->Ln();
+        $pdf->Cell(15, 15, '');
+        $pdf->Cell(15);
+        $pdf->Ln();
+        $pdf->Cell(15, 15, '');
+        $pdf->Cell(15);
+        $pdf->Cell(40, 10, 'Moh. Subekhi');
+        $pdf->Cell(90);
+        $pdf->Cell(40, 10, $model->prs_master_id);
+        $pdf->Output('D', 'hello.pdf');
     }
 
 }

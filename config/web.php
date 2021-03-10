@@ -55,8 +55,15 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@projectLogoPath' => '@app/web/resources/logo/',
     ],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'dd MM yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => '.',
+            'currencyCode' => 'IDR',
+       ],
         'i18n' => [
             'translations' => [
                 'yii2mod.user' => [

@@ -22,7 +22,8 @@
         "yii2mod/yii2-user": "*",
         "kartik-v/yii2-tree-manager": "@dev",
         "kartik-v/yii2-helpers": "dev-master",
-        "mdmsoft/yii2-admin": "~2.0"
+        "mdmsoft/yii2-admin": "~2.0",
+        "rudissaar/yii2-fpdf": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
