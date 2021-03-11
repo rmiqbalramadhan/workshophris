@@ -20,6 +20,15 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    
+    <?php \insolita\wgadminlte\LteBox::begin([
+        'type'=>\insolita\wgadminlte\LteConst::TYPE_INFO,
+        'isSolid'=>true,
+        // 'boxTools'=>'<button class="btn btn-success btn-xs create_button" ><i class="fa fa-plus-circle"></i> Add</button>',
+        // 'tooltip'=>'this tooltip description',
+        'title'=>'Leave Employee Info',
+        // 'footer'=>'total 44 active users',
+    ])?>
 
     <?php
         echo Tabs::widget([
@@ -40,41 +49,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ]);
     ?>
-    
-    <!-- <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'lve_master_id',
-            'prs_master_id',
-            'start_date',
-            'end_date',
-            'day_count',
-            //'return_date',
-            //'leave_reason',
-            //'balance',
-            //'substitute_employee',
-            //'remark',
-            //'approved_id',
-            //'superior_approved_id',
-            //'activation_code',
-            //'activation_expire',
-            //'approved_superior_by',
-            //'approved_superior_date',
-            //'approved_hr_by',
-            //'approved_hr_date',
-            //'properties',
-            //'change_log',
-            //'leave_type_id',
-            //'other_balance',
-            //'created_at',
-            //'updated_at',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?> -->
-
-
+    <?php \insolita\wgadminlte\LteBox::end()?>
 </div>

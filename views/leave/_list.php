@@ -19,6 +19,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php echo $this->render('/personnel/_searchp', ['model' => $searchModel]); ?>
     
+    <?php \insolita\wgadminlte\LteBox::begin([
+        'type'=>\insolita\wgadminlte\LteConst::TYPE_INFO,
+        'isSolid'=>true,
+        // 'boxTools'=>'<button class="btn btn-success btn-xs create_button" ><i class="fa fa-plus-circle"></i> Add</button>',
+        // 'tooltip'=>'this tooltip description',
+        'title'=>'Leave Info',
+        // 'footer'=>'total 44 active users',
+    ])?>
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -76,6 +85,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
+    <?php \insolita\wgadminlte\LteBox::end()?>
 
 </div>

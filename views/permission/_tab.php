@@ -41,6 +41,11 @@ JS;
         [
             'label' => 'Action',
             'value' => function($data){
+                if ($data->approved_id > 1 && $data->superior_approved_id > 1)
+                {
+                    $action = 'done';
+                    return $action;
+                }
                 return 
                     Html::button('Approve', ['class' => 'btn btn-success approval', 'data-id' => $data->pms_master_id, 'data-method' => 2]).
                     Html::button('Reject', ['class' => 'btn btn-warning approval', 'data-id' => $data->pms_master_id, 'data-method' => 3]);
@@ -55,6 +60,5 @@ JS;
     ],
 ]) ?>
 <?php Pjax::end() ?>
-
 
 </div>

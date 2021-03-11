@@ -18,7 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Permission', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php \insolita\wgadminlte\LteBox::begin([
+        'type'=>\insolita\wgadminlte\LteConst::TYPE_INFO,
+        'isSolid'=>true,
+        // 'boxTools'=>'<button class="btn btn-success btn-xs create_button" ><i class="fa fa-plus-circle"></i> Add</button>',
+        // 'tooltip'=>'this tooltip description',
+        'title'=>'Permission Employee',
+        // 'footer'=>'total 44 active users',
+    ])?>
     <?php
         echo Tabs::widget([
             'items' => [
@@ -37,5 +44,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ]);
     ?>
-    
+    <?php \insolita\wgadminlte\LteBox::end()?>
 </div>

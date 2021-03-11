@@ -13,22 +13,21 @@ use yii\grid\GridView;
         <?= Html::a('Create Career', ['/career/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-<?= GridView::widget([
-    'dataProvider' => $dataProviderCareer,
-    'columns' => [
-        [
-            'class' => 'yii\grid\SerialColumn',
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderCareer,
+        'columns' => [
+            [
+                'class' => 'yii\grid\SerialColumn',
+            ],
+            'start_date',
+            'status_id',
+            [
+                'label' => 'Company',
+                'attribute' => 'company.name',
+            ],
+            'level_id',
+            'employment_letter',
         ],
-        'start_date',
-        'status_id',
-        [
-            'label' => 'Company',
-            'attribute' => 'company.name',
-        ],
-        'level_id',
-        'employment_letter',
-    ],
-]) ?>
-
+    ]) ?>
 
 </div>

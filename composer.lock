@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c4f8bfd660c92518b7db81c5d08c75d",
+    "content-hash": "e38d0e57482f096cb00984c7bed638ae",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -107,6 +107,24 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/4c0e4becb8263bb5b3e6dadc448d8e7305ef8215",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/js-cookie",
+            "version": "v2.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/js-cookie/js-cookie.git",
+                "reference": "8b70250875f7e07445b6a457f9c2474ead4cba44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/js-cookie/js-cookie/zipball/8b70250875f7e07445b6a457f9c2474ead4cba44",
+                "reference": "8b70250875f7e07445b6a457f9c2474ead4cba44"
             },
             "type": "bower-asset",
             "license": [
@@ -622,6 +640,52 @@
                 "source": "https://github.com/FortAwesome/Font-Awesome/tree/v4.7.0"
             },
             "time": "2016-10-24T15:52:54+00:00"
+        },
+        {
+            "name": "insolita/yii2-adminlte-widgets",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Insolita/yii2-adminlte-widgets.git",
+                "reference": "a68e874796d00b9c1eafc827b23d4cf24a1a37cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Insolita/yii2-adminlte-widgets/zipball/a68e874796d00b9c1eafc827b23d4cf24a1a37cf",
+                "reference": "a68e874796d00b9c1eafc827b23d4cf24a1a37cf",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/js-cookie": "~2.1.0",
+                "yiisoft/yii2": ">=2.0.13"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "insolita\\wgadminlte\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "insolita",
+                    "email": "donnainsolita@gmail.com"
+                }
+            ],
+            "description": "Widgets for AdminLTE theme (Box with remember collapse state, Timeline, Tile, Callout, SmallBox etc)",
+            "keywords": [
+                "AdminLTE",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/Insolita/yii2-adminlte-widgets/issues",
+                "source": "https://github.com/Insolita/yii2-adminlte-widgets/tree/3.1.1"
+            },
+            "time": "2018-05-15T16:49:56+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
