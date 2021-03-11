@@ -63,6 +63,7 @@ $config = [
             'decimalSeparator' => ',',
             'thousandSeparator' => '.',
             'currencyCode' => 'IDR',
+            'nullDisplay' => '-',
        ],
         'i18n' => [
             'translations' => [

@@ -176,4 +176,9 @@ class Leave extends \yii\db\ActiveRecord
 
         return $dataProvider;
     }
+
+    public function getPersonnel()
+    {
+        return $this->hasOne(Personnel::className(), ['prs_master_id' => 'prs_master_id']);
+    }
 }
